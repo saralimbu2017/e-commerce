@@ -3,6 +3,9 @@ include '../lib/Session.php';
 include '../lib/Database.php';
 include '../helpers/Format.php';
 
+//calling Session checkLogin  method to verify is adminLogin is set
+Session::checkLogin();
+
 class Adminlogin {
 
   private $db;
