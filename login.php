@@ -1,4 +1,22 @@
-<?php include 'includes/header.php' ?>
+<?php 
+	include 'includes/header.php';
+	include 'includes/Adminlogin.php';
+	
+	//creating adminLogin object
+	$admLogin = new AdminLogin();
+
+	//checking if Post method is submitted
+	if($_SERVER['REQUEST_METHOD'] == 'POST') {
+		$adminUser = $_POST['adminUser'];
+		$adminPass = $_POST['adminPass'];
+
+		//user authentication
+		$loginCheck = $admnLogin->adminLogin($adminUser, $adminPass);
+	}
+
+
+
+?>
 
 
  <div class="main">
