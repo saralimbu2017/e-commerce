@@ -14,6 +14,7 @@
 		$loginCheck = $admLogin->adminLogin($adminUser, $adminPass);
 	}
 
+	//display the respective message after checking user input
 	if(isset($loginCheck)) {
 		echo $loginCheck;
 	}
