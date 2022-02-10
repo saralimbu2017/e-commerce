@@ -11,7 +11,7 @@
 		$adminPass = $_POST['adminPass'];
 
 		//user authentication
-		$loginCheck = $admnLogin->adminLogin($adminUser, $adminPass);
+		$loginCheck = $admLogin->adminLogin($adminUser, $adminPass);
 	}
 
 
