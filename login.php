@@ -14,6 +14,10 @@
 		$loginCheck = $admLogin->adminLogin($adminUser, $adminPass);
 	}
 
+	if(isset($loginCheck)) {
+		echo $loginCheck;
+	}
+
 
 
 ?>
