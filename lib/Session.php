@@ -1,6 +1,10 @@
 <?php
 class Session {
   //initializing session
+
+  // public function __construct() {
+  //   session_start();
+  // }
   public static function init() {
     session_start();
   }
@@ -23,7 +27,8 @@ class Session {
   public static function checkLogin() {
     self::init();
     if(self::get("adminlogin") == true) {
-      header("Location::login.php");
+      
+      header("Location:login.php");
     }
   }
 
@@ -34,5 +39,6 @@ class Session {
   }
 
 }
+
 
 ?>
