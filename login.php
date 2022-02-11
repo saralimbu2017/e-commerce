@@ -1,26 +1,5 @@
 <?php 
 	include 'includes/header.php';
-	include 'includes/Adminlogin.php';
-	
-	//creating adminLogin object
-	$admLogin = new AdminLogin();
-
-	//checking if Post method is submitted
-	if($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$adminUser = $_POST['adminUser'];
-		$adminPass = $_POST['adminPass'];
-
-		//user authentication
-		$loginCheck = $admLogin->adminLogin($adminUser, $adminPass);
-	}
-
-	//display the respective message after checking user input
-	if(isset($loginCheck)) {
-		echo $loginCheck;
-	}
-
-
-
 ?>
 
 
