@@ -32,6 +32,15 @@ class Session {
     }
   }
 
+  //logging out the user
+  public static function checkSession() {
+    self::init();
+    if(self::get("adminlogin") == false) {
+      self::destroy();
+      header("Location:login.php");
+    }
+  }
+
   //destroy session
   public static function destroy() {
     session_destroy();
