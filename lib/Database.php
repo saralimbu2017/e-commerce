@@ -1,5 +1,5 @@
 <?php
-  include '../config/config.php';
+  include_once '../config/config.php';
 
   class Database {
 
@@ -41,9 +41,9 @@
     //Insert data into database
     public function insert($query) {
       $insert_row = $this->link->query($query) or die($this->link->error.__LINE__);
+     
       if($insert_row) {
-        header("Location: index.php?msg=".urlencode('Data inserted'));
-        exit();
+        return true;
       } else {
         die("Error:(".$this->link->error.")".$this->link->error);
       }
