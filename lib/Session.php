@@ -1,10 +1,6 @@
 <?php
 class Session {
   //initializing session
-
-  // public function __construct() {
-  //   session_start();
-  // }
   public static function init() {
     session_start();
   }
