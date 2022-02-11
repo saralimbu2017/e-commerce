@@ -1,12 +1,13 @@
 <?php
 include '../lib/Session.php';
+Session::checkLogin();
 include '../lib/Database.php';
 include '../helpers/Format.php';
 
 //calling Session checkLogin  method to verify is adminLogin is set
-Session::checkLogin();
 
-class Adminlogin {
+
+class AdminLogin {
 
   private $db;
   private $fm;
@@ -25,7 +26,7 @@ class Adminlogin {
 
     //escaping special characters for use in SQL query
     $adminUser = mysqli_real_escape_string($this->db->link, $adminUser);
-    $adminUser = mysqli_real_escape_string($this->db->link, $adminPass);
+    $adminPass = mysqli_real_escape_string($this->db->link, $adminPass);
 
     //Check if user input is empty
     if(empty($adminUser) || empty($adminPass)) {
