@@ -17,7 +17,7 @@
       $catName = mysqli_real_escape_string($this->db->link, $catName);
       if(empty($catName)) {
         $msg = "Category Field must not be empty. ";
-        return $msg;
+        
       } else {
         //insert query
         $query = "INSERT INTO tbl_category(catName) values('$catName')";
@@ -25,13 +25,14 @@
         //if successful to insert data display data to user
         if($catinsert) {
           $msg = "<span class='success'> Category inserted</span>";
-          return $msg;
+          
          
         } else {
           //Display message on failure to insert data
           $msg = "<span class='error'> Category failed to be inserted</span>";
-          return $msg;
+          
         }
+        return $msg;
       }
     }
 
@@ -56,7 +57,7 @@
       $id = mysqli_real_escape_string($this->db->link, $id);
       if(empty($categoryName)) {
         $msg = "<span class='success'>Category field must not be empty.</span>";
-        return $msg;
+        //return $msg;
       } else {
         $query = "UPDATE tbl_category
                   SET
@@ -67,9 +68,11 @@
           $msg = "<span class='success'>Category updated successfully.</span>";
         } else {
           $msg = "<span class='success'>Category not inserted.</span>";
-          return $msg;
+          
         }
+        
       }
+      return $msg;
     }
   }
 

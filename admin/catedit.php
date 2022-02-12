@@ -12,45 +12,48 @@
 
   $cat = new Category();
   if($_SERVER['REQUEST_METHOD'] == 'POST') {
-      $catName = $_POST['catName'];
-      $insertCat =  $cat->catInsert($catName);
+    $catName = $_POST['catName'];
+    $updateCat =  $cat->categoryUpdate($catName, $id);
+    if($updateCat) {
+      header("Location: index.php?msg=".urlencode('Data inserted'));
+    }
   }
  ?>
 
-        <div class="grid_10">
-            <div class="box round first grid">
-                <h2>Add New Category</h2>
-               <div class="block copyblock"> 
-                <?php 
-                    if(isset($insertCat)) {
-                        echo $insertCat;
-                    }
+  <div class="grid_10">
+    <div class="box round first grid">
+      <h2>Add New Category</h2>
+      <div class="block copyblock"> 
+        <?php 
+          // if(isset($updateCat)) {
+          //   echo $updateCat;
+          // }
 
-                    $getCategory = $cat->getCategoryById($id);
-                    if($getCategory) {
-                      while($result = $getCategory->fetch_assoc()) {
+          $getCategory = $cat->getCategoryById($id);
+          if($getCategory) {
+            while($result = $getCategory->fetch_assoc()) {
 
-                    
-                ?> 
-                 <form method="post" action="">
-                    <table class="form">					
-                        <tr>
-                            <td>
-                                <input type="text" name="catName" value="<?php echo $result['catName']; ?>" class="medium" />
-                            </td>
-                        </tr>
-						<tr> 
-                            <td>
-                                <input type="submit" name="submit" Value="Update" />
-                            </td>
-                        </tr>
-                    </table>
-                    </form>
-                    <?php   
-                        }
-                      } 
-                    ?>
-                </div>
-            </div>
-        </div>
+              
+          ?> 
+            <form method="post" action="">
+              <table class="form">					
+                  <tr>
+                    <td>
+                      <input type="text" name="catName" value="<?php echo $result['catName']; ?>" class="medium" />
+                    </td>
+                  </tr>
+                  <tr> 
+                    <td>
+                      <input type="submit" name="submit" Value="Update" />
+                    </td>
+                  </tr>
+              </table>
+              </form>
+              <?php   
+                  }
+                } 
+              ?>
+          </div>
+      </div>
+  </div>
 <?php include 'inc/footer.php';?>
