@@ -5,15 +5,17 @@
 
 	//creating Brand object
 	$brand = new Brand();
+
 	//call method to delete category if delCat is set
-	// if(isset($_GET['delBrand'])) {
-	// 	$id = $_GET['delBrand'];
-	// 	$delBrand = $cat->deleteBrandById($id);
-	// }
+	if(isset($_GET['delBrand'])) {
+		$id = $_GET['delBrand'];
+    
+		$delBrand = $brand->deleteBrandById($id);
+	}
 ?>
 	<div class="grid_10">
 		<div class="box round first grid">
-			<h2>Category List</h2>
+			<h2>Brand List</h2>
 			<div class="block">  
 				<?php
 					if(isset($delBrand)) {
@@ -35,6 +37,7 @@
 							if($getBrand) {
 								$i = 0;
 								//loop through the categories
+              
 								while($result = $getBrand->fetch_assoc()) {
 								$i++;
 				
@@ -43,10 +46,12 @@
 							<td><?php echo $i; ?></td>
 							<td><?php echo $result['brandName']; ?></td>
 							<td><a href="brandedit.php?brandId=<?php echo $result['brandId']; ?>">Edit</a> || 
-							<a onclick="return confirm('Are you sure to delete')" href="?delbrand=<?php echo $result['brandId']; ?>">Delete</a></td>
+							<a onclick="return confirm('Are you sure to delete')" href="?delBrand=<?php echo $result['brandId']; ?>">Delete</a></td>
 						</tr>
+            
 						<?php  	
 								}
+               
 							} ?>
 					</tbody>
 				</table>
