@@ -49,6 +49,28 @@
       return $result;
     }
 
+    //update category
+    public function categoryUpdate($categoryName, $id) {
+      $categoryName = $this->fm->validation($categoryName);
+      $categoryName = mysqli_real_escape_string($this->db->link, $categoryName);
+      $id = mysqli_real_escape_string($this->db->link, $id);
+      if(empty($categoryName)) {
+        $msg = "<span class='success'>Category field must not be empty.</span>";
+        return $msg;
+      } else {
+        $query = "UPDATE tbl_category
+                  SET
+                  catName = '$categoryName'
+                  WHERE catId = '$id'";
+        $update_row = $this->db->update($query);
+        if($update_row) {
+          $msg = "<span class='success'>Category updated successfully.</span>";
+        } else {
+          $msg = "<span class='success'>Category not inserted.</span>";
+          return $msg;
+        }
+      }
+    }
   }
 
 
