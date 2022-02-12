@@ -7,9 +7,6 @@
  if($_SERVER['REQUEST_METHOD'] == 'POST') {
      $catName = $_POST['catName'];
      $insertCat =  $cat->catInsert($catName);
-     if($insertCat) {
-        header("Location: dashboard.php?msg=".urlencode('Data inserted'));
-     }
  }
  ?>
 
@@ -18,9 +15,9 @@
                 <h2>Add New Category</h2>
                <div class="block copyblock"> 
               <?php 
-                    // if(isset($insertCat)) {
-                    //     echo $insertCat;
-                    // }
+                    if(isset($insertCat)) {
+                        echo $insertCat;
+                    }
                 ?> 
                  <form method="post" action="">
                     <table class="form">					
