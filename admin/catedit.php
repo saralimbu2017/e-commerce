@@ -3,9 +3,10 @@
   include_once 'inc/sidebar.php';
   include_once '../classes/Category.php';
 
-  if(!isset($_GET['catId']) || $_GET['catId'] == NULL) {
+  if(!isset($_GET['catId']) || ($_GET['catId'] == NULL) ) {
     echo "<script> window.location = 'catlist.php'; </script>";
-  } else {
+  }
+  else {
     $id = $_GET['catId'];
   }
 
