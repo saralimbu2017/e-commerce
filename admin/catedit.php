@@ -14,20 +14,17 @@
   if($_SERVER['REQUEST_METHOD'] == 'POST') {
     $catName = $_POST['catName'];
     $updateCat =  $cat->categoryUpdate($catName, $id);
-    if($updateCat) {
-      header("Location: index.php?msg=".urlencode('Data inserted'));
-    }
   }
- ?>
+  ?>
 
   <div class="grid_10">
     <div class="box round first grid">
       <h2>Add New Category</h2>
       <div class="block copyblock"> 
         <?php 
-          // if(isset($updateCat)) {
-          //   echo $updateCat;
-          // }
+          if(isset($updateCat)) {
+            echo $updateCat;
+          }
 
           $getCategory = $cat->getCategoryById($id);
           if($getCategory) {
