@@ -44,6 +44,8 @@
      
       if($insert_row) {
         return true;
+        //header("Location: index.php?msg=".urlencode('Data inserted'));
+        //exit();
       } else {
         die("Error:(".$this->link->error.")".$this->link->error);
       }
