@@ -35,6 +35,13 @@
       }
     }
 
+    //get the category list from database
+    public function getAllCaterogies() {
+      $query = "SELECT * FROM tbl_category ORDER BY catId DESC";
+      $result = $this->db->select($query);
+      return $result;
+    }
+
   }
 
 
