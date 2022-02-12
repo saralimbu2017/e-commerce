@@ -78,6 +78,7 @@
     //delete Category of specific id
     public function deleteBrandById($id) {
       $query = "DELETE FROM tbl_brand WHERE brandId = '$id'";
+      echo $query;
       $deldata = $this->db->delete($query);
       if($deldata) {
         $msg = "<span class='success'> Brand Deleted Successfully.</span>";
