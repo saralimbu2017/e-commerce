@@ -31,7 +31,7 @@
 					<tbody>
 						<?php 
 							//get all the categories list
-							$getBrand = $cat->getAllBrands();
+							$getBrand = $brand->getAllBrands();
 							if($getBrand) {
 								$i = 0;
 								//loop through the categories
