@@ -74,7 +74,21 @@
       }
       return $msg;
     }
+
+    //delete Category of specific id
+    public function deleteCategoryById($id) {
+      $query = "DELETE FROM tbl_category WHERE catId = '$id'";
+      $deldata = $this->db->delete($query);
+      if($deldata) {
+        $msg = "<span class='success'> Category Deleted Successfully.</span>";
+      } else {
+        $msg = "<span class='success'> Category cannot be Deleted.</span>";
+      }
+      return $msg;
+    }
   }
+
+
 
 
 ?>
