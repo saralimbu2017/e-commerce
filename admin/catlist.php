@@ -19,9 +19,11 @@
 					</thead>
 					<tbody>
 						<?php 
+							//get all the categories list
 							$getCategory = $cat->getAllCaterogies();
 							if($getCategory) {
 								$i = 0;
+								//loop through the categories
 								while($result = $getCategory->fetch_assoc()) {
 								$i++;
 							
