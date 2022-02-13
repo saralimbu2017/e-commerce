@@ -37,7 +37,7 @@
     }
 
     //get the category list from database
-    public function getAllCaterogies() {
+    public function getAllCategories() {
       $query = "SELECT * FROM tbl_category ORDER BY catId DESC";
       $result = $this->db->select($query);
       return $result;
