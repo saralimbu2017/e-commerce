@@ -2,11 +2,27 @@
 <?php include 'inc/sidebar.php';?>
 <?php include '../classes/Brand.php';?>
 <?php include '../classes/Category.php';?>
+<?php include '../classes/Product.php';?>
+
+<?php
+ $prod = new Product();
+ if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
+     //$prodName = $_POST['productName'];
+     $insertProduct =  $prod->productInsert($_POST, $_FILES);
+ }
+
+?>
 
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Add New Product</h2>
-        <div class="block">               
+        <div class="block">     
+        <?php 
+        if(isset($productinsert)) {
+            echo $productinsert;
+        }
+        
+        ?>
          <form action="" method="post" enctype="multipart/form-data">
             <table class="form">
                
