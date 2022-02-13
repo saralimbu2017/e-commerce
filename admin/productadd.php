@@ -1,5 +1,8 @@
 ﻿<?php include 'inc/header.php';?>
 <?php include 'inc/sidebar.php';?>
+<?php include '../classes/Brand.php';?>
+<?php include '../classes/Category.php';?>
+
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Add New Product</h2>
@@ -22,9 +25,19 @@
                     <td>
                         <select id="select" name="catId">
                             <option>Select Category</option>
-                            <option value="1">Category One</option>
-                            <option value="2">Category Two</option>
-                            <option value="3">Category Three</option>
+                            
+                            <?php
+                                $cat = new Category();
+                                $getCat = $cat->getAllCategories();
+                             
+                                if($getCat) {
+                                    while($result = $getCat->fetch_assoc()) {
+                            ?>
+                                    <option value="<?php echo $result['catId']; ?>"><?php echo $result['catName']; ?></option>
+                                    <?php
+                                    }
+                                }
+                            ?>
                         </select>
                     </td>
                 </tr>
@@ -35,9 +48,18 @@
                     <td>
                         <select id="select" name="brandId">
                             <option>Select Brand</option>
-                            <option value="1">Brand One</option>
-                            <option value="2">Brand Two</option>
-                            <option value="3">Brand Three</option>
+                            <?php 
+                                $brand = new Brand();
+                                $getBrand = $brand->getAllBrands();
+                                if($getBrand) {
+                                    while($result = $getBrand->fetch_assoc()) {
+                            ?>
+                                    <option value="<?php echo $result['brandId']; ?>"><?php echo $result['brandName']; ?></option>
+                                
+                            <?php
+                                    }
+                                }
+                            ?>
                         </select>
                     </td>
                 </tr>
