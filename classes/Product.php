@@ -76,28 +76,55 @@
     }
 
     //update category
-    public function productUpdate($productName, $id) {
-      $productName = $this->fm->validation($productName);
-      $productName = mysqli_real_escape_string($this->db->link, $productName);
-      $id = mysqli_real_escape_string($this->db->link, $id);
-      if(empty($productName)) {
-        $msg = "<span class='success'>Product field must not be empty.</span>";
-        //return $msg;
+    public function productUpdate($data, $file, $id) {
+      $productName = mysqli_real_escape_string($this->db->link, $data['productName']);
+      $catId = mysqli_real_escape_string($this->db->link, $data['catId']);
+      $brandId = mysqli_real_escape_string($this->db->link, $data['brandId']);
+      $body = mysqli_real_escape_string($this->db->link, $data['body']);
+      $price = mysqli_real_escape_string($this->db->link, $data['price']);
+      $type = mysqli_real_escape_string($this->db->link, $data['type']);
+
+      //restricting file format
+      $permitted = array('jpg','png','jpeg','gif');
+      $file_name = $file['image']['name'];
+      $file_size = $file['image']['size'];
+      $file_temp = $file['image']['tmp_name'];
+
+      //Naming each file with unique name and defining the path
+      $div = explode('.',$file_name);
+      $file_ext = strtolower(end($div));
+      $unique_image = substr(md5(time()), 0, 10).'.'.$file_ext;
+      $uploaded_image = "../admin/upload/".$unique_image;
+
+
+      if($productName == "" || $catId == "" || $brandId == "" || $body == "" || $type == "") {
+        $msg = "<span class='error'> Product Field must not be empty.</span> ";
+        
+      } 
+
+      //restricting file size
+      if($file_size > 1054589) {
+        $msg = "<span class='error'> Image size should be less than 1 MB.</span> ";
+      } else if(in_array($file_ext, $permitted) === false) {
+        $msg =  "<span class='error'> You can upload only".implode(',',$permitted)."</span> ";
       } else {
-        $query = "UPDATE tbl_product
-                  SET
-                  productName = '$productName'
-                  WHERE productId = '$id'";
-        $update_row = $this->db->update($query);
-        if($update_row) {
-          $msg = "<span class='success'>Product updated successfully.</span>";
+        //moving uploaded file to specified path
+        move_uploaded_file($file_temp, $uploaded_image);
+        //insert query
+        $query = "INSERT INTO tbl_product(productName, catId, brandId, body, price, image, type) values('$productName','$catId','$brandId','$body','$price','$uploaded_image','$type')";
+        $productinsert = $this->db->insert($query);
+        //if successful to insert data display data to user
+        if($productinsert) {
+          $msg = "<span class='success'> Product inserted</span>";
+          
+         
         } else {
-          $msg = "<span class='success'>Product not inserted.</span>";
+          //Display message on failure to insert data
+          $msg = "<span class='error'> Product failed to be inserted</span>";
           
         }
-        
+        return $msg;
       }
-      return $msg;
     }
 
     //delete Category of specific id
