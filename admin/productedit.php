@@ -48,7 +48,7 @@
                         <label>Name</label>
                     </td>
                     <td>
-                        <input type="text" name="productName" placeholder="Enter Product Name..." class="medium" />
+                        <input type="text" name="productName" value="<?php echo $value['productName']; ?>" class="medium" />
                     </td>
                 </tr>
 				<tr>
@@ -66,7 +66,17 @@
                                 if($getCat) {
                                     while($result = $getCat->fetch_assoc()) {
                             ?>
-                                    <option value="<?php echo $result['catId']; ?>"><?php echo $result['catName']; ?></option>
+                                    <option 
+                                    <?php
+                                      //select and display this option if value of option is equal to the $result[id]
+                                      if($value['catId'] == $result['catId']) { ?>
+                                    
+                                        selected = "selected"
+                                      <?php
+                                      }
+
+                                    ?>
+                                    value="<?php echo $result['catId']; ?>"><?php echo $result['catName']; ?></option>
                                     <?php
                                     }
                                 }
