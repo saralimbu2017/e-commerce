@@ -5,7 +5,7 @@
 	include '/helpers/Format.php';
 
 	//autoload function to include classes automatically
-	spl_autoload_register(function($class)) {
+	spl_autoload_register(function($class) {
 		include_once "classes/".$class.".php";
 	});
 
