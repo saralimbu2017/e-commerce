@@ -2,7 +2,7 @@
 <?php include 'inc/sidebar.php';?>
 <?php include '../classes/Brand.php';?>
 <?php include '../classes/Category.php';?>
-<?php include '../classes/Product.php';?>
+<?php include '../classes/Product.php';?> 
 
 <?php
  $prod = new Product();
