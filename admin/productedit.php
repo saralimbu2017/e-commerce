@@ -150,8 +150,17 @@
                     <td>
                         <select id="select" name="type">
                             <option>Select Type</option>
+                            <?php
+                              if($value['type'] == 0) { ?>
+                            
+                              <option selected = "selected" value="0">Featured</option>
+                              <option value="1">General</option>
+                            <?php  
+                              } else { 
+                            ?>
                             <option value="0">Featured</option>
-                            <option value="1">General</option>
+                            <option selected = "selected" value="1">General</option>
+                            <?php } ?>
                         </select>
                     </td>
                 </tr>
