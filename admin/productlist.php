@@ -6,6 +6,12 @@
 
 	$prod = new Product();
 	$fm = new Format();
+
+	//on clicking delete button, call deleteProductById method
+	if(isset($_GET['delproduct'])) {
+		$id = $_GET['delproduct'];
+		$delproduct = $prod->deleteProductById($id);
+	}
 ?>
 	<div class="grid_10">
     <div class="box round first grid">
