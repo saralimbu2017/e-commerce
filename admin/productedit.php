@@ -129,7 +129,7 @@
                         <label>Price</label>
                     </td>
                     <td>
-                        <input type="text" name="price" placeholder="Enter Price..." class="medium" />
+                        <input type="text" name="price" value="<?php echo $value['price']; ?>" class="medium" />
                     </td>
                 </tr>
             
