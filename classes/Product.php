@@ -103,38 +103,62 @@
       } else {
         if(!empty($file_name)) {
 
-      //restricting file size
-      if($file_size > 1054589) {
-        $msg = "<span class='error'> Image size should be less than 1 MB.</span> ";
-      } else if(in_array($file_ext, $permitted) === false) {
-        $msg =  "<span class='error'> You can upload only".implode(',',$permitted)."</span> ";
-      } else {
-        //moving uploaded file to specified path
-        move_uploaded_file($file_temp, $uploaded_image);
-
-        //update query
-        $query = "UPDATE tbl_product
-        SET
-        productName = '$productName',
-        catId = '$catId',
-        brandId = '$brandId',
-        body = '$body',
-        price = '$price',
-        image = '$uploaded_image',
-        type = '$type'
-        WHERE productId = '$id'";
-
-        $productinsert = $this->db->update($query);
-        //if successful to insert data display data to user
-        if($productinsert) {
-          $msg = "<span class='success'> Product updated successfully.</span>"; 
+        //restricting file size
+        if($file_size > 1054589) {
+          $msg = "<span class='error'> Image size should be less than 1 MB.</span> ";
+        } else if(in_array($file_ext, $permitted) === false) {
+          $msg =  "<span class='error'> You can upload only".implode(',',$permitted)."</span> ";
         } else {
-          //Display message on failure to insert data
-          $msg = "<span class='error'> Product failed to be updated.</span>";
+          //moving uploaded file to specified path
+          move_uploaded_file($file_temp, $uploaded_image);
+
+          //update query
+          $query = "UPDATE tbl_product
+          SET
+          productName = '$productName',
+          catId = '$catId',
+          brandId = '$brandId',
+          body = '$body',
+          price = '$price',
+          image = '$uploaded_image',
+          type = '$type'
+          WHERE productId = '$id'";
+
+          $updatedProduct = $this->db->update($query);
+          //if successful to insert data display data to user
+          if($updatedProduct) {
+            $msg = "<span class='success'> Product updated successfully.</span>"; 
+          } else {
+            //Display message on failure to insert data
+            $msg = "<span class='error'> Product failed to be updated.</span>";
+            
+          }
+          //return $msg;
+        }
+        } else {
+           //update query
+           $query = "UPDATE tbl_product
+           SET
+           productName = '$productName',
+           catId = '$catId',
+           brandId = '$brandId',
+           body = '$body',
+           price = '$price',
+           type = '$type'
+           WHERE productId = '$id'";
+ 
+           $updatedProduct = $this->db->update($query);
+           if($updatedProduct) {
+            $msg = "<span class='success'> Product updated successfully.</span>"; 
+          } else {
+            //Display message on failure to insert data
+            $msg = "<span class='error'> Product failed to be updated.</span>";
+            
+          }
           
         }
-        return $msg;
       }
+      return $msg;
     }
 
     //delete Category of specific id
