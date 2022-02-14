@@ -15,11 +15,11 @@
 						while($result = $getFpd->fetch_assoc()) {
 				?>
 				<div class="grid_1_of_4 images_1_of_4">
-					 <a href="preview.php"><img src="images/feature-pic1.png" alt="" /></a>
-					 <h2>Lorem Ipsum is simply </h2>
-					 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+					 <a href="preview.php?productId=<?php echo $result['productId']; ?>"><img src="admin/<?php echo $result['image']; ?>" alt="" /></a>
+					 <h2><?php echo $result['productName']; ?> </h2>
+					 <p><?php echo $fm->textShorten($result['body'], 60); ?></p>
 					 <p><span class="price">$505.22</span></p>
-				     <div class="button"><span><a href="preview.php" class="details">Details</a></span></div>
+				     <div class="button"><span><a href="preview.php?productId=<?php echo $result['productd']; ?>" class="details">Details</a></span></div>
 				</div>
 				<?php 	
 						}
