@@ -17,8 +17,15 @@
     <div class="box round first grid">
         <h2>Post List</h2>
         <div class="block">  
-            <table class="data display datatable" id="example">
-			<thead>
+				<?php
+				//Display message after deleting product
+					if(isset($delproduct)) {
+						echo $delproduct;
+					}
+
+				?>
+        <table class="data display datatable" id="example">
+				<thead>
 				<tr>
 					<th>SL</th>
 					<th>Product Name</th>
