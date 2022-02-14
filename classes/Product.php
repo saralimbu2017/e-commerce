@@ -127,10 +127,10 @@
         $productinsert = $this->db->update($query);
         //if successful to insert data display data to user
         if($productinsert) {
-          $msg = "<span class='success'> Product inserted</span>"; 
+          $msg = "<span class='success'> Product updated successfully.</span>"; 
         } else {
           //Display message on failure to insert data
-          $msg = "<span class='error'> Product failed to be inserted</span>";
+          $msg = "<span class='error'> Product failed to be updated.</span>";
           
         }
         return $msg;
