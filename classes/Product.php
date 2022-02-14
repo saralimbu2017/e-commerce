@@ -164,7 +164,6 @@
     //delete Category of specific id
     public function deleteProductById($id) {
       $query = "DELETE FROM tbl_product WHERE productId = '$id'";
-      echo $query;
       $deldata = $this->db->delete($query);
       if($deldata) {
         $msg = "<span class='success'> product Deleted Successfully.</span>";
