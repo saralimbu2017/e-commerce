@@ -15,7 +15,7 @@
   $prod = new Product();
 
    //call productUpdate method of Product class is form is submitted
-  if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit']));
+  if($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['submit'])) {
  
     $updateProduct =  $prod->productUpdate($_POST, $_FILES, $id);
   }
