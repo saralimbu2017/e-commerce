@@ -174,6 +174,13 @@
     }
   }
 
+  //Retrieving Featured Products from tbl_product table
+  public function getFeaturedProducts() {
+    $query = "SELECT * FROM tbl_product WHERE type='0' ORDER BY productId DESC LIMIT 4" ;
+    $result = $this->db->select($query);
+    return $result;
+  }
+
 
 
 
