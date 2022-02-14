@@ -52,7 +52,8 @@
 						echo "General";
 					}
 					 ?></td>
-					<td><a href="">Edit</a> || <a href="">Delete</a></td>
+					<td><a href="productedit.php?productId=<?php echo $result['productId']; ?>">Edit</a> || 
+							<a onclick="return confirm('Are you sure to delete')" href="?delproduct=<?php echo $result['productId']; ?>">Delete</a></td>
 				</tr>
 				<?php	}
 				} ?>
