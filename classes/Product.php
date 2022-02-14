@@ -100,7 +100,8 @@
       if($productName == "" || $catId == "" || $brandId == "" || $body == "" || $type == "") {
         $msg = "<span class='error'> Product Field must not be empty.</span> ";
         
-      } 
+      } else {
+        if(!empty($file_name)) {
 
       //restricting file size
       if($file_size > 1054589) {
@@ -110,14 +111,23 @@
       } else {
         //moving uploaded file to specified path
         move_uploaded_file($file_temp, $uploaded_image);
-        //insert query
-        $query = "INSERT INTO tbl_product(productName, catId, brandId, body, price, image, type) values('$productName','$catId','$brandId','$body','$price','$uploaded_image','$type')";
-        $productinsert = $this->db->insert($query);
+
+        //update query
+        $query = "UPDATE tbl_product
+        SET
+        productName = '$productName',
+        catId = '$catId',
+        brandId = '$brandId',
+        body = '$body',
+        price = '$price',
+        image = '$uploaded_image',
+        type = '$type'
+        WHERE productId = '$id'";
+
+        $productinsert = $this->db->update($query);
         //if successful to insert data display data to user
         if($productinsert) {
-          $msg = "<span class='success'> Product inserted</span>";
-          
-         
+          $msg = "<span class='success'> Product inserted</span>"; 
         } else {
           //Display message on failure to insert data
           $msg = "<span class='error'> Product failed to be inserted</span>";
