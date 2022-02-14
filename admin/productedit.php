@@ -97,7 +97,14 @@
                                 if($getBrand) {
                                     while($result = $getBrand->fetch_assoc()) {
                             ?>
-                                    <option value="<?php echo $result['brandId']; ?>"><?php echo $result['brandName']; ?></option>
+                                    <option
+                                    <?php
+                                      if($value['brandId'] == $result['brandId']) { ?>
+                                        selected = "selected"
+                                    <?php
+                                      }
+                                    ?>
+                                    value="<?php echo $result['brandId']; ?>"><?php echo $result['brandName']; ?></option>
                                 
                             <?php
                                     }
@@ -112,7 +119,9 @@
                         <label>Description</label>
                     </td>
                     <td>
-                        <textarea class="tinymce" name="body"></textarea>
+                        <textarea class="tinymce" name="body">
+                          <?php echo $value['body']; ?>
+                        </textarea>
                     </td>
                 </tr>
 				<tr>
