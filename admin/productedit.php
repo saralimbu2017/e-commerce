@@ -138,6 +138,7 @@
                         <label>Upload Image</label>
                     </td>
                     <td>
+                        <img src="<?php echo $value['image']; ?>" height="40px" width="60px" alt=""> <br>
                         <input type="file" name="image" />
                     </td>
                 </tr>
