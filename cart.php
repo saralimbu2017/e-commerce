@@ -15,75 +15,36 @@
 								<th width="20%">Total Price</th>
 								<th width="10%">Action</th>
 							</tr>
+							<?php
+									$getProd = $cart->getCartProduct();
+									if($getProd) {
+										while($result = $getProd->fetch_assoc()) {
+											$i++;
+									
+							?>
 							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
+								<td><?php echo $i;?></td>
+								<td><?php echo $result['productName'];?></td>
+								<td><img src="admin/<?php echo $result['image'];?>" alt=""/></td>
+								<td><?php echo $result['price'];?></td>
 								<td>
 									<form action="" method="post">
 										<input type="number" name="" value="1"/>
 										<input type="submit" name="submit" value="Update"/>
 									</form>
 								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
-							
-							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
 								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
+									<?php
+									$total = $result['price'] * $result['quantity'];
+									echo $total;
+									?>
+							</td>
 								<td><a href="">X</a></td>
 							</tr>
-							
-							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
-								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
-							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
-								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
-							
-							<tr>
-								<td>Product Title</td>
-								<td><img src="images/new-pic3.jpg" alt=""/></td>
-								<td>Tk. 20000</td>
-								<td>
-									<form action="" method="post">
-										<input type="number" name="" value="1"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>Tk. 40000</td>
-								<td><a href="">X</a></td>
-							</tr>
-							
+							<?php
+								}
+							}
+							?>
 						</table>
 						<table style="float:right;text-align:left;" width="40%">
 							<tr>
