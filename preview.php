@@ -9,11 +9,11 @@
 	}
 
 	//Update brand details on form submission
-	$brand = new Brand();
-	if($_SERVER['REQUEST_METHOD'] == 'POST') {
-		$brandName = $_POST['brandName'];
-		$updateBrand = $brand->brandUpdate($brandName, $id);
-	}
+	// $brand = new Brand();
+	// if($_SERVER['REQUEST_METHOD'] == 'POST') {
+	// 	$brandName = $_POST['brandName'];
+	// 	$updateBrand = $brand->brandUpdate($brandName, $id);
+	// }
 
 
 ?>
@@ -21,17 +21,23 @@
  <div class="main">
     <div class="content">
     	<div class="section group">
-				<div class="cont-desc span_1_of_2">				
+				<div class="cont-desc span_1_of_2">
+					<?php
+						$getProd = $prod->getSingleProduct($id);
+						if($getProd) {
+							while($result = $getProd->fetch_assoc()) {
+
+					?>
 					<div class="grid images_3_of_2">
-						<img src="images/preview-img.jpg" alt="" />
+						<img src="admin/<?php echo $result['image']; ?>" alt="" />
 					</div>
 				<div class="desc span_3_of_2">
-					<h2>Lorem Ipsum is simply dummy text </h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>					
+					<h2><?php echo $result['productName']; ?> </h2>
+					<p><?php echo $fm->textShorten($result['body'], 200); ?></p>					
 					<div class="price">
-						<p>Price: <span>$500</span></p>
-						<p>Category: <span>Laptop</span></p>
-						<p>Brand:<span>Samsnumg</span></p>
+						<p>Price: <span><?php echo $result['price']; ?></span></p>
+						<p>Category: <span><?php echo $result['catName']; ?></span></p>
+						<p>Brand:<span><?php echo $result['brandName']; ?></span></p>
 					</div>
 				<div class="add-cart">
 					<form action="cart.html" method="post">
@@ -42,10 +48,13 @@
 			</div>
 			<div class="product-desc">
 			<h2>Product Details</h2>
-			<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
-	        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+					<?php echo $result['body']; ?>
 	    </div>
-				
+		<?php 			
+					}
+				}
+					
+	  ?>		
 	</div>
 				<div class="rightsidebar span_3_of_1">
 					<h2>CATEGORIES</h2>
