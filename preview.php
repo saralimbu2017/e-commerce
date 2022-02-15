@@ -1,4 +1,22 @@
-<?php include 'includes/header.php' ?>
+<?php 
+	include 'includes/header.php'; 
+	
+	//Redirect to 404 page if productId is not set or null
+	if(!isset($_GET['productId']) || $_GET['productId'] == NULL) {
+		echo "<script>window.location = '404.php'; </script>";
+	} else {
+		$id = $_GET['productId'];
+	}
+
+	//Update brand details on form submission
+	$brand = new Brand();
+	if($_SERVER['REQUEST_METHOD'] == 'POST') {
+		$brandName = $_POST['brandName'];
+		$updateBrand = $brand->brandUpdate($brandName, $id);
+	}
+
+
+?>
 
  <div class="main">
     <div class="content">
