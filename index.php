@@ -1,5 +1,7 @@
-<?php include 'includes/header.php' ?>
-<?php include 'includes/slider.php' ?>
+<?php
+	include 'includes/header.php';
+	include 'includes/slider.php';
+ ?>
 <div class="main">
     <div class="content">
     	<div class="content_top">
@@ -10,6 +12,7 @@
     	</div>
 	      <div class="section group">
 				<?php
+				///Displaying product data from database
 					$getFpd = $prod->getFeaturedProducts();
 					if($getFpd) {
 						while($result = $getFpd->fetch_assoc()) {
