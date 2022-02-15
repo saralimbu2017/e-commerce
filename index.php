@@ -1,6 +1,8 @@
 <?php
 	include 'includes/header.php';
 	include 'includes/slider.php';
+
+	echo session_id();
  ?>
 <div class="main">
     <div class="content">
