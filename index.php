@@ -38,7 +38,7 @@
 			<div class="section group">
 
 				<?php 
-					$getNewProd = $prod->getNewProduct();
+					$getNewProd = $prod->getNewProducts();
 					if($getNewProd) {
 						while($result = $getNewProd->fetch_assoc()) {
 
