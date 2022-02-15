@@ -185,6 +185,13 @@
     return $result;
   }
 
+    //Retrieving New Products from tbl_product table
+    public function getNewProducts() {
+      $query = "SELECT * FROM tbl_product ORDER BY productId DESC LIMIT 4" ;
+      $result = $this->db->select($query);
+      return $result;
+    }
+
 
 }
 
