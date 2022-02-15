@@ -1,8 +1,11 @@
 <?php
-include '../lib/Session.php';
+
+$filepath = realpath(dirname(__FILE__));
+include_once ($filepath.'/../lib/Session.php');
 Session::checkLogin();
-include '../lib/Database.php';
-include '../helpers/Format.php';
+include_once ($filepath.'/../lib/Database.php');
+include_once ($filepath.'/../helpers/Format.php');
+
 
 //calling Session checkLogin  method to verify is adminLogin is set
 
