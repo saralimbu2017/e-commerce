@@ -1,4 +1,14 @@
-<?php include 'includes/header.php' ?>
+<?php 
+ include 'includes/header.php'; 
+
+ if($_SERVER['REQUEST_METHOD'] == 'POST') {
+	$cartId = $_POST['cartId'];
+	$quantity = $_POST['quantity'];
+	$updateCart = $cart->updateCartQuantity($quantity, $cartId);
+}
+
+
+?>
 
 
  <div class="main">
@@ -6,6 +16,13 @@
     	<div class="cartoption">		
 			<div class="cartpage">
 			    	<h2>Your Cart</h2>
+
+						<?php 
+							if(isset($updateCart)) {
+								echo $updateCart;
+							}
+
+						?>
 						<table class="tblone">
 							<tr>
 								<th width="20%">Item No.</th>
@@ -33,7 +50,8 @@
 								<td><?php echo "$ ".$result['price'];?></td>
 								<td>
 									<form action="" method="post">
-										<input type="number" name="" value="1"/>
+									  <input type="hidden" name="cartId" value="<?php echo $result['cartId'];?>"/>
+										<input type="number" name="quantity" value="<?php echo $result['quantity'];?>"/>
 										<input type="submit" name="submit" value="Update"/>
 									</form>
 								</td>
