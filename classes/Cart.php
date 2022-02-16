@@ -26,6 +26,13 @@
       $price = $result['price'];
       $image = $result['image'];
 
+      $checkQuery = "SELECT * FROM tbl_cart WHERE productId = '$productId' AND sId = '$sId'";
+      $getResult = $this->db->select($checkQuery);
+      if($getResult) {
+          $msg = "Product already added to cart.";
+          return $msg;
+      } else {
+
       $query = "INSERT INTO tbl_cart(sId, productId, productName, price, quantity, image)   VALUES('$sId','$productId','$productName','$price','$quantity','$image')";
       $inserted_row = $this->db->insert($query);
 
@@ -35,6 +42,7 @@
       } else {
         header("Location:404.php");
       }
+    }
     }
 
     //Reading product details from database
