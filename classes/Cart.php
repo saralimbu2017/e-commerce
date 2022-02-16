@@ -40,7 +40,7 @@
     //Reading product details from database
     public function getCartProduct() {
       $sId = session_id();
-      $query = "SELECT * FROM tbl_cart WHERE productId = '$sId' ";
+      $query = "SELECT * FROM tbl_cart WHERE sId = '$sId' ";
       $result = $this->db->select($query);
       return $result;
     }
