@@ -20,6 +20,7 @@
 									$getProd = $cart->getCartProduct();
 									if($getProd) {
 										$i = 0;
+										$sum = 0;
 										while($result = $getProd->fetch_assoc()) {
 											$i++;
 									
@@ -45,6 +46,8 @@
 								<td><a href="">X</a></td>
 							</tr>
 							<?php
+
+								$sum = $sum + $total;
 								}
 							}
 							?>
@@ -52,15 +55,19 @@
 						<table style="float:right;text-align:left;" width="40%">
 							<tr>
 								<th>Sub Total : </th>
-								<td>TK. 210000</td>
+								<td><?php echo $sum;?></td>
 							</tr>
 							<tr>
 								<th>VAT : </th>
-								<td>TK. 31500</td>
+								<td>10%</td>
 							</tr>
 							<tr>
 								<th>Grand Total :</th>
-								<td>TK. 241500 </td>
+								<td><?php 
+									$vat = $sum * 0.1;
+									$grandTotal = $sum + $vat;
+									echo $grandTotal;
+								?> </td>
 							</tr>
 					   </table>
 					</div>
