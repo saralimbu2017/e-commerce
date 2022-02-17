@@ -71,5 +71,18 @@
                 }
               return $msg;
     }
+
+    ///Deleting product in cart
+    public function deleteProductByCart($deleteId) {
+      $deleteId = mysqli_real_escape_string($this->db->link, $deleteId);
+      $query = "DELETE FROM tbl_cart WHERE cartId = '$deleteId'";
+      $data = $this->db->delete($query);
+      if($data) {
+        $msg = "<span class='success'>window.location='cart.php';</span>";
+      } else {
+        $msg = "<span class='success'>Category not deleted.</span>";
+      }
+      return $msg;
+    }
   }
 ?>
