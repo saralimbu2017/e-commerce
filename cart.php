@@ -4,7 +4,7 @@
  //If delProductId is set with GET method, call deleteProductByCart method
  if(isset($_GET['delProductId'])) {
 	 $deleteId = $_GET['delProductId'];
-	 $deleteProduct = $cart->deleteProductByCart($deleteId);
+	 //$deleteProduct = $cart->deleteProductByCart($deleteId);
  }
 
  if($_SERVER['REQUEST_METHOD'] == 'POST') {
