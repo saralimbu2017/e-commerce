@@ -61,7 +61,7 @@
 									echo "$ ".$total;
 									?>
 							</td>
-								<td><a href="?delProductId=<?php echo $result['cartId']; ?>">X</a></td>
+								<td><a onClick="return confirm('Are you sure to Delete');" href="?delProductId=<?php echo $result['cartId']; ?>">X</a></td>
 							</tr>
 							<?php
 
