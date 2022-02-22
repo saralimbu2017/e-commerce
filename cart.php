@@ -40,61 +40,71 @@
 								<th width="10%">Action</th>
 							</tr>
 							<?php
-									$getProd = $cart->getCartProduct();
-									if($getProd) {
-										$i = 0;
-										$sum = 0;
-										while($result = $getProd->fetch_assoc()) {
-											$i++;
+								
+								$getProd = $cart->getCartProduct();
+								//echo $getProd;
+								//die();
+								if($getProd) {
+									$i = 0;
+									$sum = 0;
 									
-							?>
-							<tr>
-
-								<td><?php echo $i;?></td>
-								<td><?php echo $result['productName'];?></td>
-								<td><img src="admin/<?php echo $result['image'];?>" alt=""/></td>
-								<td><?php echo "$ ".$result['price'];?></td>
-								<td>
-									<form action="" method="post">
-									  <input type="hidden" name="cartId" value="<?php echo $result['cartId'];?>"/>
-										<input type="number" name="quantity" value="<?php echo $result['quantity'];?>"/>
-										<input type="submit" name="submit" value="Update"/>
-									</form>
-								</td>
-								<td>
-									<?php
-									$total = $result['price'] * $result['quantity'];
-									echo "$ ".$total;
+									while($result = $getProd->fetch_assoc()) {
+										$i++;
+										
 									?>
-							</td>
-								<td><a onClick="return confirm('Are you sure to Delete');" href="?delProductId=<?php echo $result['cartId']; ?>">X</a></td>
-							</tr>
-							<?php
+									<tr>
 
-								$sum = $sum + $total;
-								}
-							}
+										<td><?php echo $i;?></td>
+										<td><?php echo $result['productName'];?></td>
+										<td><img src="admin/<?php echo $result['image'];?>" alt=""/></td>
+										<td><?php echo "$ ".$result['price'];?></td>
+										<td>
+											<form action="" method="post">
+												<input type="hidden" name="cartId" value="<?php echo $result['cartId'];?>"/>
+												<input type="number" name="quantity" value="<?php echo $result['quantity'];?>"/>
+												<input type="submit" name="submit" value="Update"/>
+											</form>
+										</td>
+										<td>
+											<?php
+											$total = $result['price'] * $result['quantity'];
+											echo "$ ".$total;
+											?>
+									</td>
+										<td><a onClick="return confirm('Are you sure to Delete');" href="?delProductId=<?php echo $result['cartId']; ?>">X</a></td>
+									</tr>
+									<?php
+										
+										$sum = $sum + $total;
+										
+										}
+								
 							?>
-						</table>
-						<table style="float:right;text-align:left;" width="40%">
-							<tr>
-								<th>Sub Total : </th>
-								<td><?php echo "$ ".$sum;?></td>
-							</tr>
-							<tr>
-								<th>VAT : </th>
-								<td>10%</td>
-							</tr>
-							<tr>
-								<th>Grand Total :</th>
-								<td><?php 
-									$vat = $sum * 0.1;
-									$grandTotal = $sum + $vat;
-									echo "$ ".$grandTotal;
-								?> </td>
-							</tr>
-					   </table>
-					</div>
+							</table>
+							
+							<table style="float:right;text-align:left;" width="40%">
+								<tr>
+									<th>Sub Total : </th>
+									<td><?php  echo $sum;?></td>
+								</tr>
+								<tr>
+									<th>VAT : </th>
+									<td>10%</td>
+								</tr>
+								<tr>
+									<th>Grand Total :</th>
+									<td><?php 
+										$vat = $sum * 0.1;
+										$grandTotal = $sum + $vat;
+										echo "$ ".$grandTotal;
+									?> </td>
+								</tr>
+							</table>
+							<?php
+									
+								}
+							?>
+						</div>
 					<div class="shopping">
 						<div class="shopleft">
 							<a href="index.html"> <img src="images/shop.png" alt="" /></a>
