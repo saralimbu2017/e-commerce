@@ -59,6 +59,8 @@
 								<span class="cart_title">Cart</span>
 								<span class="no_product">
 								<?php	
+								//Read data added to cart
+								$getData = $cart->checkCartTable();
 								//Read session data
 								$sum = Session::get("sum");
 								echo "$".$sum;
