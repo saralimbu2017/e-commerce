@@ -10,7 +10,12 @@
  if($_SERVER['REQUEST_METHOD'] == 'POST') {
 	$cartId = $_POST['cartId'];
 	$quantity = $_POST['quantity'];
+
 	$updateCart = $cart->updateCartQuantity($quantity, $cartId);
+	//check if product quantity is 0
+	if($quantity <= 0) {
+		$deleteProduct = $cart->deleteProductByCart($cartId);
+	}
 }
 
 
