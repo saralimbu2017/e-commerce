@@ -56,7 +56,7 @@
 								if($getProd) {
 									$i = 0;
 									$sum = 0;
-									
+									$qty = 0;
 									while($result = $getProd->fetch_assoc()) {
 										$i++;
 										
@@ -83,14 +83,23 @@
 										<td><a onClick="return confirm('Are you sure to Delete');" href="?delProductId=<?php echo $result['cartId']; ?>">X</a></td>
 									</tr>
 									<?php
-										
+										$qty = $qty + $result['quantity'];
 										$sum = $sum + $total;
 										//setting session variable
 										Session::set("sum", $sum);
-										}
+										Session::set("qty", $qty);
+									}
 								
 							?>
 							</table>
+									<?php
+										$getData = $cart->checkCartTable();
+										if($getData) {
+
+										//}	
+
+
+									?>
 							
 							<table style="float:right;text-align:left;" width="40%">
 								<tr>
@@ -112,7 +121,10 @@
 							</table>
 							<?php
 									
+								} else {
+									echo "cart empty";
 								}
+							}
 							?>
 						</div>
 					<div class="shopping">
