@@ -61,9 +61,13 @@
 								<?php	
 								//Read data added to cart
 								$getData = $cart->checkCartTable();
-								//Read session data
-								$sum = Session::get("sum");
-								echo "$".$sum;
+								if($getData) {
+									//Read session data and assigning it to sum variable
+									$sum = Session::get("sum");
+									echo "$".$sum;
+								} else {
+									echo "Empty";
+								}
 							 ?>
 							</span>
 							</a>
