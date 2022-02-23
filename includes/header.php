@@ -57,7 +57,13 @@
 					<div class="cart">
 						<a href="#" title="View my shopping cart" rel="nofollow">
 								<span class="cart_title">Cart</span>
-								<span class="no_product">(empty)</span>
+								<span class="no_product">
+								<?php	
+								//Read session data
+								$sum = Session::get("sum");
+								echo "$".$sum;
+							 ?>
+							</span>
 							</a>
 						</div>
 			      </div>
