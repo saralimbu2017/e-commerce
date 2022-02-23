@@ -122,7 +122,8 @@
 							<?php
 									
 								} else {
-									echo "cart empty";
+									//if cart is empty redirect to index page
+									header("Location:index.php");
 								}
 							}
 							?>
