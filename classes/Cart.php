@@ -87,7 +87,8 @@
 
     //Reading data in cart table
     public function checkCartTable() {
-      $query = "SELECT * FROM tbl_cart";
+      $sId = session_id();
+      $query = "SELECT * FROM tbl_cart WHERE sId = '$sId'";
       $result = $this->db->select($query);
       return $result;
     }
