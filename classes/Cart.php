@@ -84,5 +84,12 @@
       }
       return $msg;
     }
+
+    //Reading data in cart table
+    public function checkCartTable() {
+      $query = "SELECT * FROM tbl_cart";
+      $result = $this->db->select($query);
+      return $result;
+    }
   }
 ?>
