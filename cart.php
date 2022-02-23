@@ -85,7 +85,8 @@
 									<?php
 										
 										$sum = $sum + $total;
-										
+										//setting session variable
+										Session::set("sum", $sum);
 										}
 								
 							?>
