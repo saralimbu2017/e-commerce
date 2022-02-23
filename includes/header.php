@@ -64,7 +64,8 @@
 								if($getData) {
 									//Read session data and assigning it to sum variable
 									$sum = Session::get("sum");
-									echo "$".$sum;
+									$qty = Session::get("qty");
+									echo "$".$sum."Qty".$qty;
 								} else {
 									echo "Empty";
 								}
