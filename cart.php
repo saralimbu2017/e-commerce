@@ -22,7 +22,7 @@
 ?>
 <?php
 	if(!isset($_GET['id'])) {
-		echo "<meta http-equiv='refresh' content='0;URL=?id=live'>";
+		echo "<meta http-equiv='refresh' content='0;URL=?id=live'/>";
 	}
 
 
@@ -122,6 +122,7 @@
 										$vat = $sum * 0.1;
 										$grandTotal = $sum + $vat;
 										echo "$ ".$grandTotal;
+										Session::set("grandTotal", $grandTotal);
 									?> </td>
 								</tr>
 							</table>
