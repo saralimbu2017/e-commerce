@@ -63,9 +63,9 @@
 								$getData = $cart->checkCartTable();
 								if($getData) {
 									//Read session data and assigning it to sum variable
-									$sum = Session::get("sum");
+									$grandTotal = Session::get("grandTotal");
 									$qty = Session::get("qty");
-									echo "$".$sum."Qty".$qty;
+									echo "$".$grandTotal."Qty".$qty;
 								} else {
 									echo "Empty";
 								}
